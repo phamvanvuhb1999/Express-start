@@ -1,0 +1,13 @@
+h1 User list
+
+a(href="/users/create") new
+form(action="/users/search", method="GET")
+	input(type="text", name="q", id ='vu')
+	button(onclick="invert()") Search
+	
+ul
+	each user in users
+		li=user.name
+
+script
+	-  function invert(){ alert(q); };
