@@ -34,9 +34,25 @@ module.exports.viewid = function(req, res){
 };
 
 module.exports.postcreate = function(req,res){
+	var errors = [];
+
 	var temp = {
 		id: ++id,
-		name: req.body.name
+		name: req.body.name,
+		number: req.body.number
+	}
+	if(!temp.name){
+		errors.push('Name is required.');
+	}
+	if(!temp.number){
+		errors.push('Number is required.');
+	}
+	if(errors.length){
+		res.render('users/create', {
+			errors: errors,
+			view: req.body
+		});
+		return;
 	}
 	console.log(temp);
 	db.get('users').push(temp).write();

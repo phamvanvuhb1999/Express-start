@@ -2,19 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "vu"
-    },
-    {
-      "id": 2,
-      "name": "an"
-    },
-    {
-      "id": 3,
-      "name": "quyet"
-    },
-    {
-      "id": 4,
-      "name": "thao"
+      "name": "tuan",
+      "number": "012744624"
     }
   ]
 }
