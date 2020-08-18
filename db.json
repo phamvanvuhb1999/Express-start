@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "pham vu",
-      "number": "0357437692"
+      "email": "phamvanvuhb1999@gmail.com",
+      "password": "3cfa37c7b3a55a1ce224620f7823417c"
     }
   ]
 }

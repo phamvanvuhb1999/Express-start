@@ -1,7 +1,11 @@
 const express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 var userRoute = require('./routes/user.route.js');
+var authRoute = require('./routes/auth.route.js');
+
+var authMiddleware = require('./middlewares/auth.middleware.js');
 
 const app = express();
 
@@ -10,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
  
 // parse application/json
 app.use(bodyParser.json());
-var id = 2;
-
+//parse cookie
+app.use(cookieParser('phamvanvu'));
 
 app.get('/', function(req,res){
 	res.render('index.pug', {
@@ -21,7 +25,8 @@ app.get('/', function(req,res){
 
 app.use(express.static('public'));
 
-app.use('/users', userRoute);
+app.use('/users', authMiddleware.requireAuth, userRoute);
+app.use('/auth', authRoute);
 
 
 app.listen(3000, function(){
