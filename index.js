@@ -1,3 +1,6 @@
+require('dotenv').config();
+console.log(process.env.SESSION_SECRET);
+
 const express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -15,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 //parse cookie
-app.use(cookieParser('phamvanvu'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.get('/', function(req,res){
 	res.render('index.pug', {
