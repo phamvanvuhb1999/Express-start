@@ -1,3 +1,5 @@
+var shortid = require('shortid');
+
 var db = require('../db.js');
 
 var id = 0; 
@@ -35,10 +37,12 @@ module.exports.viewid = function(req, res){
 };
 
 module.exports.postcreate = function(req,res){
+	var path= req.file.path.split('\\').slice(1).join('\\');
 	var temp = {
-		id: ++id,
+		id: shortid.generate(),
 		name: req.body.name,
-		number: req.body.number
+		number: req.body.number,
+		avatar: path
 	}
 
 	console.log(temp);
